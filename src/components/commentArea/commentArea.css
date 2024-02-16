@@ -1,0 +1,5 @@
+:root {
+  .modal {
+    --bs-modal-width: 50%;
+  }
+}
