@@ -2,6 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Open the Website
+
+You can visit the website using the following link:
+
+[https://bookreactepic.netlify.app](https://bookreactepic.netlify.app)
+
 ## Available Scripts
 
 In the project directory, you can run:
