@@ -1,14 +1,14 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 
 const MyNav = (props) => {
-    const site = props.site
-    const home = props.link1;
-    const about = props.link2;
-    const browse = props.link3
-    return (
-        <div>
+  const site = props.site;
+  const home = props.link1;
+  const about = props.link2;
+  const browse = props.link3;
+  return (
+    <div>
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand href="#home">{site}</Navbar.Brand>
@@ -19,8 +19,8 @@ const MyNav = (props) => {
           </Nav>
         </Container>
       </Navbar>
-      </div>
-    )
+    </div>
+  );
 };
 
 export default MyNav;

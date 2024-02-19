@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { EcommerceCard } from '../card/Card';
-import { CustomSpinner } from '../loader/Spinner';
-import getData from '../../api';
-import { Form, FormControl, Button } from 'react-bootstrap';
+import React, { useEffect, useState } from "react";
+import { EcommerceCard } from "../card/Card";
+import { CustomSpinner } from "../loader/Spinner";
+import getData from "../../api";
+import { Form, FormControl, Button } from "react-bootstrap";
 
 const Allthebooks = () => {
   const [books, setBooks] = useState([]);
@@ -23,7 +23,7 @@ const Allthebooks = () => {
         const data = await getData();
         setBooks(data);
       } catch (error) {
-        console.error('Error:', error);
+        console.error("Error:", error);
       } finally {
         setLoading(false);
       }
@@ -38,7 +38,11 @@ const Allthebooks = () => {
   };
 
   const clickForFilter = () => {
-    setArrayFiltered(books.filter(book => book.title.toLowerCase().includes(valueBook.toLowerCase())));
+    setArrayFiltered(
+      books.filter((book) =>
+        book.title.toLowerCase().includes(valueBook.toLowerCase())
+      )
+    );
     setIsFilter(true);
   };
 
@@ -47,10 +51,25 @@ const Allthebooks = () => {
       <div className="row justify-content-around mt-5">
         <Form className="col-md-6">
           <Form.Group controlId="default-search" className="mb-3">
-            <Form.Label className="text-sm font-medium text-gray-900 sr-only dark:text-white">Search</Form.Label>
+            <Form.Label className="text-sm font-medium text-gray-900 sr-only dark:text-white">
+              Search
+            </Form.Label>
             <div className="position-relative">
-              <FormControl onChange={handleChange} value={valueBook} type="search" className="form-control" placeholder="Search Books..." required />
-              <Button onClick={clickForFilter} type="button" className="btn btn-primary position-absolute top-50 end-0 translate-middle-y">Search</Button>
+              <FormControl
+                onChange={handleChange}
+                value={valueBook}
+                type="search"
+                className="form-control"
+                placeholder="Search Books..."
+                required
+              />
+              <Button
+                onClick={clickForFilter}
+                type="button"
+                className="btn btn-primary position-absolute top-50 end-0 translate-middle-y"
+              >
+                Search
+              </Button>
             </div>
           </Form.Group>
         </Form>
@@ -61,20 +80,20 @@ const Allthebooks = () => {
         </div>
       ) : (
         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-          {(isFilter && valueBook.length > 0
-            ? arrayFiltered
-            : books
-          ).slice(0, 20).map((book) => (
-            <div className="col" key={book.asin}>
-              <EcommerceCard
-                id={book.asin}
-                onClick={changeColor}
-                img={book.img}
-                title={book.title}
-                price={book.price}
-                category={book.category} />
-            </div>
-          ))}
+          {(isFilter && valueBook.length > 0 ? arrayFiltered : books)
+            .slice(0, 20)
+            .map((book) => (
+              <div className="col" key={book.asin}>
+                <EcommerceCard
+                  id={book.asin}
+                  onClick={changeColor}
+                  img={book.img}
+                  title={book.title}
+                  price={book.price}
+                  category={book.category}
+                />
+              </div>
+            ))}
         </div>
       )}
     </div>
