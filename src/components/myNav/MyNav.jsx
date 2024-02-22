@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Form, FormControl, Button } from "react-bootstrap";
 import { SearchContext } from "../provider/SearchContext";
+import SwitchMode from "../switchMode/SwitchMode";
 
 const MyNav = (props) => {
   // Destructuring props
@@ -56,6 +57,7 @@ const MyNav = (props) => {
             <Nav.Link href="#">{browse}</Nav.Link>
           </Nav>
           {/* Search form */}
+          <SwitchMode />
           <Form className="d-flex">
             <FormControl
               // Handling search input change

@@ -10,7 +10,12 @@ export function EcommerceCard({ onClick, id, img, title, price, category }) {
       className="group relative shadow mb-4 h-100"
       onClick={onClick}
     >
-      <Card.Img variant="top" src={img} alt={title} />
+      <Card.Img
+        className="ratio ratio-1x1"
+        variant="top"
+        src={img}
+        alt={title}
+      />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{category}</Card.Text>
