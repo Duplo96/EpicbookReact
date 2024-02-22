@@ -6,6 +6,8 @@ import Navbar from "react-bootstrap/Navbar";
 import { Form, FormControl, Button } from "react-bootstrap";
 import { SearchContext } from "../provider/SearchContext";
 import SwitchMode from "../switchMode/SwitchMode";
+import { useSelector } from "react-redux";
+import { darkState } from "../../reducer/darkModeSlice";
 
 const MyNav = (props) => {
   // Destructuring props
@@ -17,7 +19,7 @@ const MyNav = (props) => {
   // Accessing context values using useContext hook
   const { searchQuery, setSearchQuery, setArrayFiltered, setIsFilter, books } =
     useContext(SearchContext);
-
+  const isDarkMode = useSelector(darkState);
   // Function to handle search input change
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
@@ -46,7 +48,10 @@ const MyNav = (props) => {
   return (
     <div>
       {/* Navbar component */}
-      <Navbar bg="light" data-bs-theme="light">
+      <Navbar
+        bg={isDarkMode ? "dark" : "light"}
+        data-bs-theme={isDarkMode ? "dark" : "light"}
+      >
         <Container>
           {/* Navbar brand */}
           <Navbar.Brand href="#home">{site}</Navbar.Brand>

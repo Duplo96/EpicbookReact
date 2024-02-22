@@ -2,12 +2,16 @@ import { Card } from "react-bootstrap"; // Importing necessary components from R
 import "bootstrap/dist/css/bootstrap.min.css"; // Importing Bootstrap CSS
 import CommentArea from "../commentArea/CommentArea";
 import "./card.css";
-
+import { darkState } from "../../reducer/darkModeSlice";
+import { useSelector } from "react-redux";
 export function EcommerceCard({ onClick, id, img, title, price, category }) {
+  const isDarkMode = useSelector(darkState);
   return (
     <Card
       key={id}
-      className="group relative shadow mb-4 h-100"
+      className={`${
+        isDarkMode ? "bg-dark text-white" : ""
+      } group relative shadow mb-4 h-100`}
       onClick={onClick}
     >
       <Card.Img

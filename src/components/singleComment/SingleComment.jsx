@@ -1,6 +1,6 @@
 import React from "react";
 import "./singleComments.css";
-const SingleComment = ({ img, author, date, description, rate }) => {
+const SingleComment = ({ author, date, description, rate }) => {
   return (
     <>
       <div className="comment mt-4 text-justify float-left">

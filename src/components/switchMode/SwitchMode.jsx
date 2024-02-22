@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./switchMode.css";
+import { useDispatch, useSelector } from "react-redux";
+import { darkState, handleDarkMode } from "../../reducer/darkModeSlice";
 const SwitchMode = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const isDarkMode = useSelector(darkState);
+  const dispatch = useDispatch();
   const handleToggle = () => {
-    setIsDarkMode((prevMode) => !prevMode);
-    document.body.classList.toggle("dark-mode");
+    dispatch(handleDarkMode());
   };
 
   return (

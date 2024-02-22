@@ -6,7 +6,8 @@ import { Row, Col } from "react-bootstrap";
 import FormComment from "../formcomment/FormComment";
 import SingleComment from "../singleComment/SingleComment";
 import "./commentArea.css";
-
+import { darkState } from "../../reducer/darkModeSlice";
+import { useSelector } from "react-redux";
 const CommentArea = ({ id }) => {
   // State variables
   const [show, setShow] = useState(false);
@@ -16,6 +17,7 @@ const CommentArea = ({ id }) => {
   const toggleReload = () => setReload(!reload);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const isDarkMode = useSelector(darkState);
 
   // Function to handle click on a card/book
   const handleCardClick = (e) => {
@@ -52,7 +54,11 @@ const CommentArea = ({ id }) => {
   return (
     <>
       {/* Button to trigger the modal */}
-      <Button id={id} variant="primary" onClick={handleCardClick}>
+      <Button
+        id={id}
+        variant={`${isDarkMode ? "light" : "dark"}`}
+        onClick={handleCardClick}
+      >
         Show Comments
       </Button>
 
