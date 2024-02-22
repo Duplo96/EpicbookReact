@@ -8,6 +8,7 @@ import SingleComment from "../singleComment/SingleComment";
 import "./commentArea.css";
 
 const CommentArea = ({ id }) => {
+  // State variables
   const [show, setShow] = useState(false);
   const [comments, setComments] = useState([]);
   const [cardId, setCardId] = useState("");
@@ -15,13 +16,14 @@ const CommentArea = ({ id }) => {
   const toggleReload = () => setReload(!reload);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // Function to handle click on a card/book
   const handleCardClick = (e) => {
-    console.log(e.target);
     setCardId(e.target.id);
-    console.log(cardId);
     handleShow();
   };
 
+  // Fetch comments for the selected card/book when cardId or reload changes
   useEffect(() => {
     if (cardId) {
       const getComment = async (cardId) => {
@@ -46,12 +48,15 @@ const CommentArea = ({ id }) => {
       getComment(cardId);
     }
   }, [cardId, reload]);
+
   return (
     <>
+      {/* Button to trigger the modal */}
       <Button id={id} variant="primary" onClick={handleCardClick}>
         Show Comments
       </Button>
 
+      {/* Modal component */}
       <Modal
         show={show}
         onHide={handleClose}
@@ -62,9 +67,12 @@ const CommentArea = ({ id }) => {
           <Modal.Title>Comments Area</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/* Row to display comments and comment form */}
           <Row className="position-relative">
+            {/* Column to display comments */}
             <Col lg="7">
               <div>
+                {/* Display existing comments or a message if there are none */}
                 {comments.length === 0 ? (
                   <p>No comments yet</p>
                 ) : (
@@ -80,12 +88,14 @@ const CommentArea = ({ id }) => {
                 )}
               </div>
             </Col>
+            {/* Column to display comment form */}
             <Col lg="5">
               <FormComment elementId={cardId} toggleReload={toggleReload} />
             </Col>
           </Row>
         </Modal.Body>
         <Modal.Footer>
+          {/* Button to close the modal */}
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>

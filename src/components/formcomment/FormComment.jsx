@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 
 const FormComment = ({ elementId, toggleReload }) => {
+  // State for storing comment and rating
   const [comment, setComment] = useState({
     comment: "",
     rate: 1,
     elementId: elementId,
   });
+
+  // Handler function for updating comment state
   const handlerComment = ({ target: { value } }) => {
     setComment((prevComment) => ({ ...prevComment, comment: value }));
   };
+
+  // Handler function for updating rating state
   const handlerRate = ({ target: { value } }) => {
     setComment((prevComment) => ({ ...prevComment, rate: value }));
   };
+
+  // Function for posting comments to the API
   const postComments = async (e, comment) => {
     e.preventDefault();
     try {
@@ -30,15 +37,18 @@ const FormComment = ({ elementId, toggleReload }) => {
       );
       const data = await res.json();
       console.log(data);
-      toggleReload();
+      toggleReload(); // Toggling reload to refresh comments after submission
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
+    // Form for submitting comments
     <Form className="sticky-top" onSubmit={(e) => postComments(e, comment)}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Let us know your opinion</Form.Label>
+        {/* Input field for entering comment */}
         <Form.Control
           onChange={handlerComment}
           type="text"
@@ -47,6 +57,7 @@ const FormComment = ({ elementId, toggleReload }) => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Rate this book</Form.Label>
+        {/* Input field for entering rating */}
         <Form.Control
           onChange={handlerRate}
           type="number"
@@ -54,6 +65,7 @@ const FormComment = ({ elementId, toggleReload }) => {
         />
       </Form.Group>
 
+      {/* Submit button */}
       <Button variant="primary" type="submit">
         Submit
       </Button>
