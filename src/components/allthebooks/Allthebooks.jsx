@@ -6,12 +6,25 @@ import { darkState } from "../../reducer/darkModeSlice";
 import { useSelector } from "react-redux";
 import "./allthebooks.css";
 const Allthebooks = () => {
-  const { loading, searchQuery, arrayFiltered, isFilter, books } =
-    useContext(SearchContext);
+  const {
+    loading,
+    searchQuery,
+    arrayFiltered,
+    isFilter,
+    books,
+    bookDetail,
+    setBookDetail,
+  } = useContext(SearchContext);
   const isDarkMode = useSelector(darkState);
+
   const changeColor = (e) => {
     const selectedBook = e.currentTarget;
-    selectedBook.classList.toggle("clicked-card");
+    setBookDetail((prevBookDetail) => ({
+      ...prevBookDetail,
+      id: selectedBook.id,
+      img: selectedBook.childNodes[0].src,
+    }));
+    console.log(bookDetail);
   };
 
   return (

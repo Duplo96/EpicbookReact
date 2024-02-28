@@ -6,9 +6,11 @@ import { darkState } from "../../reducer/darkModeSlice";
 import { useSelector } from "react-redux";
 export function EcommerceCard({ onClick, id, img, title, price, category }) {
   const isDarkMode = useSelector(darkState);
+
   return (
     <Card
       key={id}
+      id={id}
       className={`${
         isDarkMode ? "bg-dark text-white" : ""
       } group relative shadow mb-4 h-100`}
@@ -25,6 +27,7 @@ export function EcommerceCard({ onClick, id, img, title, price, category }) {
         <Card.Text>{category}</Card.Text>
         <div className="d-flex justify-content-between align-items-center">
           <p className="text-sm font-medium text-gray-900">{price}€</p>
+          <a href={id}>PIIPPPPO</a>
           <CommentArea id={id} />
         </div>
       </Card.Body>

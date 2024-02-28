@@ -11,6 +11,7 @@ const SearchProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [isFilter, setIsFilter] = useState(false);
   const [books, setBooks] = useState([]);
+  const [bookDetail, setBookDetail] = useState({ id: "", img: "" });
 
   // Fetching data using useEffect hook when component mounts
   useEffect(() => {
@@ -45,6 +46,8 @@ const SearchProvider = ({ children }) => {
         isFilter,
         setIsFilter,
         loading,
+        setBookDetail,
+        bookDetail,
       }}
     >
       {children}
