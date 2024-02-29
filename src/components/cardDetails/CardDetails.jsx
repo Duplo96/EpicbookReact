@@ -28,7 +28,8 @@ const CardDetails = () => {
   useEffect(() => {
     getBookDetails();
     setCardId(id);
-  }, [id]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, setCardId]);
   console.log(comments);
   return (
     <>
