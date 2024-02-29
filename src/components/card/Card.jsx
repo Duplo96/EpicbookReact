@@ -4,6 +4,7 @@ import CommentArea from "../commentArea/CommentArea";
 import "./card.css";
 import { darkState } from "../../reducer/darkModeSlice";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 export function EcommerceCard({ onClick, id, img, title, price, category }) {
   const isDarkMode = useSelector(darkState);
 
@@ -27,7 +28,7 @@ export function EcommerceCard({ onClick, id, img, title, price, category }) {
         <Card.Text>{category}</Card.Text>
         <div className="d-flex justify-content-between align-items-center">
           <p className="text-sm font-medium text-gray-900">{price}€</p>
-          <a href={id}>PIIPPPPO</a>
+          <Link to={`/${id}`}> aaaa </Link>
           <CommentArea id={id} />
         </div>
       </Card.Body>

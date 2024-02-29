@@ -57,7 +57,7 @@ const MyNav = (props) => {
           <Navbar.Brand href="#home">{site}</Navbar.Brand>
           {/* Navbar links */}
           <Nav className="me-auto">
-            <Nav.Link href="#">{home}</Nav.Link>
+            <Nav.Link href="/">{home}</Nav.Link>
             <Nav.Link href="#">{about}</Nav.Link>
             <Nav.Link href="#">{browse}</Nav.Link>
           </Nav>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React from "react";
@@ -8,16 +8,16 @@ import SingleComment from "../singleComment/SingleComment";
 import "./commentArea.css";
 import { darkState } from "../../reducer/darkModeSlice";
 import { useSelector } from "react-redux";
+import { CommentContext } from "../provider/CommentContext";
 const CommentArea = ({ id }) => {
   // State variables
   const [show, setShow] = useState(false);
-  const [comments, setComments] = useState([]);
-  const [cardId, setCardId] = useState("");
-  const [reload, setReload] = useState(false);
   const toggleReload = () => setReload(!reload);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const isDarkMode = useSelector(darkState);
+  const { setCardId, cardId, comments, reload, setReload } =
+    useContext(CommentContext);
 
   // Function to handle click on a card/book
   const handleCardClick = (e) => {
@@ -26,30 +26,6 @@ const CommentArea = ({ id }) => {
   };
 
   // Fetch comments for the selected card/book when cardId or reload changes
-  useEffect(() => {
-    if (cardId) {
-      const getComment = async (cardId) => {
-        try {
-          const response = await fetch(
-            `https://striveschool-api.herokuapp.com/api/books/${cardId}/comments/`,
-            {
-              method: "GET",
-              headers: {
-                Authorization:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIxNzFlNjkxM2Y2NTAwMThkMDkyN2IiLCJpYXQiOjE3MDgwODk2NjYsImV4cCI6MTcwOTI5OTI2Nn0.Oz2IYoLeW07qPhAbavLj94O7yxFjp0sKvTc5ep3U_1U",
-              },
-            }
-          );
-          const data = await response.json();
-          setComments(data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-
-      getComment(cardId);
-    }
-  }, [cardId, reload]);
 
   return (
     <>

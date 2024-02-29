@@ -6,26 +6,13 @@ import { darkState } from "../../reducer/darkModeSlice";
 import { useSelector } from "react-redux";
 import "./allthebooks.css";
 const Allthebooks = () => {
-  const {
-    loading,
-    searchQuery,
-    arrayFiltered,
-    isFilter,
-    books,
-    bookDetail,
-    setBookDetail,
-  } = useContext(SearchContext);
+  const { loading, searchQuery, arrayFiltered, isFilter, books } =
+    useContext(SearchContext);
   const isDarkMode = useSelector(darkState);
 
-  const changeColor = (e) => {
-    const selectedBook = e.currentTarget;
-    setBookDetail((prevBookDetail) => ({
-      ...prevBookDetail,
-      id: selectedBook.id,
-      img: selectedBook.childNodes[0].src,
-    }));
-    console.log(bookDetail);
-  };
+  // const changeColor = (e) => {
+  //   const selectedBook = e.currentTarget;
+  // };
 
   return (
     <div className={`${isDarkMode ? "container dark" : "container bg-white"}`}>
@@ -45,7 +32,7 @@ const Allthebooks = () => {
               <div className="col" key={book.asin}>
                 <EcommerceCard
                   id={book.asin}
-                  onClick={changeColor}
+                  // onClick={changeColor}
                   img={book.img}
                   title={book.title}
                   price={book.price}

@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { SearchContext } from "../components/provider/SearchContext";
-import { EcommerceCard } from "../components/card/Card";
+import React from "react";
+
+import CardDetails from "../components/cardDetails/CardDetails";
+import Mainlayout from "../layouts/Mainlayout";
 
 const ProfilePages = () => {
-  const { bookDetail } = useContext(SearchContext);
   return (
-    <div className="col" key={bookDetail.id}>
-      <EcommerceCard img={bookDetail.img} />
-    </div>
+    <Mainlayout>
+      <CardDetails />;
+    </Mainlayout>
   );
 };
 
