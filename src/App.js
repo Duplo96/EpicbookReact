@@ -18,7 +18,7 @@ function App() {
         <SearchProvider>
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path=":id" element={<ProfilePages />} />
+            <Route path="/detail/:id" element={<ProfilePages />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </SearchProvider>

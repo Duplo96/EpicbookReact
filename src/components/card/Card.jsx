@@ -28,7 +28,7 @@ export function EcommerceCard({ onClick, id, img, title, price, category }) {
         <Card.Text>{category}</Card.Text>
         <div className="d-flex justify-content-between align-items-center">
           <p className="text-sm font-medium text-gray-900">{price}€</p>
-          <Link to={`/${id}`}> aaaa </Link>
+          <Link to={`/detail/${id}`}> aaaa </Link>
           <CommentArea id={id} />
         </div>
       </Card.Body>
