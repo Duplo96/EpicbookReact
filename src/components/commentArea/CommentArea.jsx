@@ -25,8 +25,6 @@ const CommentArea = ({ id }) => {
     handleShow();
   };
 
-  // Fetch comments for the selected card/book when cardId or reload changes
-
   return (
     <>
       {/* Button to trigger the modal */}
