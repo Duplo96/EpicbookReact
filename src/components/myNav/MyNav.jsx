@@ -8,6 +8,7 @@ import { SearchContext } from "../provider/SearchContext";
 import SwitchMode from "../switchMode/SwitchMode";
 import { useSelector } from "react-redux";
 import { darkState } from "../../reducer/darkModeSlice";
+import { Link } from "react-router-dom";
 
 const MyNav = (props) => {
   // Destructuring props
@@ -57,7 +58,7 @@ const MyNav = (props) => {
           <Navbar.Brand href="#home">{site}</Navbar.Brand>
           {/* Navbar links */}
           <Nav className="me-auto">
-            <Nav.Link href="/">{home}</Nav.Link>
+            <Link to="/">{home}</Link>
             <Nav.Link href="#">{about}</Nav.Link>
             <Nav.Link href="#">{browse}</Nav.Link>
           </Nav>
